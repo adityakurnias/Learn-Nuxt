@@ -5,8 +5,8 @@
         <div class="flex items-center space-x-4">
           <NuxtLink to="/" class="text-xl font-bold">FashionTech</NuxtLink>
           <nav class="hidden md:flex space-x-4">
-            <NuxtLink to="/clothing" class="text-sm font-medium hover:text-gray-600">Clothing</NuxtLink>
-            <NuxtLink to="/electronics" class="text-sm font-medium hover:text-gray-600">Electronics</NuxtLink>
+            <NuxtLink to="#cloth" class="text-sm font-medium hover:text-gray-600">Clothing</NuxtLink>
+            <NuxtLink to="#electro" class="text-sm font-medium hover:text-gray-600">Electronics</NuxtLink>
           </nav>
         </div>
         <div class="flex items-center space-x-4">
@@ -42,7 +42,7 @@
     </header>
 
     <main class="flex-grow">
-      <section class="w-full py-12 md:py-24 lg:py-32 bg-[url('/placeholder.svg?height=400&width=800')] bg-cover bg-center">
+      <section class="w-full py-12 md:py-24 lg:py-32 bg-[url('/mainthumb.jpg')] bg-cover bg-center">
         <div class="container mx-auto px-4 md:px-6">
           <div class="flex flex-col items-center space-y-4 text-center">
             <div class="space-y-2">
@@ -60,44 +60,48 @@
         </div>
       </section>
 
-      <section class="w-full py-12 md:py-24 lg:py-32">
+      <section id="cloth" class="w-full py-12 md:py-24 lg:py-32">
         <div class="container mx-auto px-4 md:px-6">
           <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8">Featured Clothing</h2>
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             <div v-for="p in productsCloth"  class="group relative overflow-hidden rounded-lg">
-              <img
-                :src="p.image"
-                :alt="p.title"
-                class="object-cover h-64 mx-auto transition-transform group-hover:scale-105"
-              />
-              <div class="absolute inset-0 bg-black bg-opacity-40 transition-opacity opacity-0 group-hover:opacity-100 flex items-end">
-                <div class="p-4 text-white">
-                  <h3 class="font-semibold">{{ p.title }}</h3>
-                  <p>&dollar;{{ p.price }}</p>
+              <NuxtLink :to="`/product/${ p.id }`">
+                <img
+                  :src="p.image"
+                  :alt="p.title"
+                  class="object-cover h-64 mx-auto transition-transform group-hover:scale-105"
+                />
+                <div class="absolute inset-0 bg-black bg-opacity-40 transition-opacity opacity-0 group-hover:opacity-100 flex items-end">
+                  <div class="p-4 text-white">
+                    <h3 class="font-semibold">{{ p.title }}</h3>
+                    <p>&dollar;{{ p.price }}</p>
+                  </div>
                 </div>
-              </div>
+              </NuxtLink>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="w-full py-12 md:py-24 lg:py-32 bg-gray-100">
+      <section id="electro" class="w-full py-12 md:py-24 lg:py-32 bg-gray-100">
         <div class="container mx-auto px-4 md:px-6">
           <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8">Featured Electronics</h2>
           <div class="h-96 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             <div v-for="p in productsElect" class="group h-96 relative overflow-hidden rounded-lg bg-white">
-              <div class=" h-1/2">
-                <img
-                  :src="p.image"
-                  :alt="p.title"
-                  class=" p-3 transition-transform h-full mx-auto group-hover:scale-105"
-                />
-              </div>
-              <div class="p-4">
-                <h3 class="font-semibold">{{ p.title }}</h3>
-                <p class="text-sm text-gray-500">Latest model</p>
-                <p class="mt-2 font-bold">&dollar;{{ p.price }}</p>
-              </div>
+              <NuxtLink :to="`/product/${ p.id }`">
+                <div class=" h-1/2">
+                  <img
+                    :src="p.image"
+                    :alt="p.title"
+                    class=" p-3 transition-transform h-full mx-auto group-hover:scale-105"
+                  />
+                </div>
+                <div class="p-4">
+                  <h3 class="font-semibold">{{ p.title }}</h3>
+                  <p class="text-sm text-gray-500">Latest model</p>
+                  <p class="mt-2 font-bold">&dollar;{{ p.price }}</p>
+                </div>
+              </NuxtLink>
             </div>
           </div>
         </div>
@@ -110,8 +114,8 @@
           <div class="space-y-3">
             <h3 class="text-lg font-medium">Shop</h3>
             <ul class="space-y-1">
-              <li><NuxtLink to="/clothing" class="text-sm text-gray-300 hover:underline">Clothing</NuxtLink></li>
-              <li><NuxtLink to="/electronics" class="text-sm text-gray-300 hover:underline">Electronics</NuxtLink></li>
+              <li><NuxtLink to="#cloth" class="text-sm text-gray-300 hover:underline">Clothing</NuxtLink></li>
+              <li><NuxtLink to="#electro" class="text-sm text-gray-300 hover:underline">Electronics</NuxtLink></li>
               <li><NuxtLink to="/new-arrivals" class="text-sm text-gray-300 hover:underline">New Arrivals</NuxtLink></li>
               <li><NuxtLink to="/sale" class="text-sm text-gray-300 hover:underline">Sale</NuxtLink></li>
             </ul>

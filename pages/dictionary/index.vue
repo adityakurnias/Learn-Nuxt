@@ -6,7 +6,7 @@
     </form>
     <div class="mt-5 text-center">
       <h2 class="text-2xl font-bold"></h2>
-      <p class="mt-2">{{ word }}</p>
+      <p class="mt-2">{{ words }}</p>
     </div>
   </div>
 </template>
@@ -15,6 +15,10 @@
 
   import { ref } from 'vue'
   const word = ref('')
+
+  const uri = 'https://api.dictionaryapi.dev/api/v2/entries/en/' + word
+
+  const { data: words } = await useLazyFetch(uri)
  
 </script>
 
