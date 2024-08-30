@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .btn {
+        @apply max-w-16 shadow-md bg-green-500 rounded-lg max-h-10 p-2 m-6 text-white hover:bg-green-600 font-bold transition-all duration-200;
+    }
+}
